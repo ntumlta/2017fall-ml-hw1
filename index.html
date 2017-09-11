@@ -18,19 +18,28 @@
 * Github Repository URL 連結 <a href="" target="_blank"><i class="fa fa-file-text"></i></a>
 * Deadline: 2017/05/04 11:59 P.M. (GMT+8)
 * TA會於4/20釋出範例程式碼，亦為超過 Kaggle simple baseline 的加分截止期限
-* 在做 P4及P5時，請大家先看過這個關於 <a href="" target="_blank">visualization 的 tutorial</a>
 
 <hr>
-In this assignment, you will practice using Gradient Descent to predict PM2.5 in the future.
+
+In this assignment, you will practice using Gradient Descent to predict PM2.5.
 
 The requirements of this assignment are as follows:
 
-* Python3.6 required
-* Only (1)numpy (2)scipy (3)pandas (4)csv are allowed, but using **numpy.linalg.lstsq** is forbidden.
-* 
+* **Python3.6** required
+* Only (1)numpy (2)scipy (3)pandas (4)csv are allowed
+* numpy.linalg.lstsq is forbidden.
+* Please handcraft "linear regression" using **Gradient Descent**
 
-### Data 簡介
+Data 簡介
+* train.csv : 每個月前20天每個小時的氣象資料(每小時有18種測資)。共12個月。
+* <img src="train.png" alt="train.png" style="width: 200px;"/>
+* test.csv : 排除train.csv中剩餘的資料，取連續9小時的資料當feature，預測第10小時的PM2.5值。總共取240筆不重複的test data。
+* <img src="test.png" alt="test.png" style="width: 200px;"/>
 
+Submission Format - 預測test set中的240筆PM2.5，上傳至Kaggle。
+* 上傳格式為csv
+* 第一行必須是 id, value
+* 第二行開始，每行分別為id及預測數值，以逗點分開
 
 </xmp>
 </xmp> <script src="strapdown.js"></script> </html>
