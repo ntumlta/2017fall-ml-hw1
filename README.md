@@ -1,3 +1,3 @@
-106ML-hw1
+2017fall-ml-hw1
 ===
-所以這是什麼qq
+Please kindly visit https://r06944010.github.io/2017fall-ml-hw1/
