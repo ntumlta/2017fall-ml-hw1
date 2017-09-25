@@ -1,4 +1,4 @@
-baseurl = "http://r06944010.github.io/106ML-hw1/index.html/"
+baseurl = "http://r06944010.github.io/106ML-hw1/"
 languageCode = "en-us"
 title = "Geneping testing site"
 theme = "ananke"
