@@ -19,12 +19,11 @@ In this assignment, you will practice using Gradient Descent to predict PM2.5.
 * 投影片連結 <a href="https://docs.google.com/presentation/d/1JAaVzT8UTShojE385a-wGzRe8WsJpQE0FhWQGc_Q-L0/edit?usp=sharing" target="_blank"><i class="fa fa-slideshare"></i></a>
 * Kaggle 連結 <a href="https://www.kaggle.com/c/ml-2017fall-hw1" target="_blank"><i class="fa fa-trophy"></i></a>
 * Github Repository URL 連結 <a href="https://goo.gl/forms/LOX5W6ByDPSNWA6N2" target="_blank"><i class="fa fa-file-text"></i></a>
-* Deadline: 2017/05/04 11:59 P.M. (GMT+8)
-* TA會於4/20釋出範例程式碼，亦為超過 Kaggle simple baseline 的加分截止期限
+* TA會於10/6釋出範例程式碼，亦為超過 Kaggle simple baseline 的得分截止期限
 
 ### The requirements of this assignment are as follows:
 
-* **Python3.6** required
+* **Python3.5+** required
 * Only (1)numpy (2)scipy (3)pandas (4)csv are allowed
 * numpy.linalg.lstsq is forbidden.
 * Please handcraft "linear regression" using **Gradient Descent**
@@ -36,12 +35,12 @@ In this assignment, you will practice using Gradient Descent to predict PM2.5.
 
 ### Submission Format
 
-#### 1. Kaggle (5 points) : Before 10/12/2017 11:59:00 PM UTC
+#### 1. Kaggle (5 points) : Before 10/12/2017 11:59:00 PM (GMT+8)
 
 上傳格式:  
 
 * 上傳格式為csv
-* 第一行必須是 id, value
+* 第一行必須是 id,value
 * 第二行開始，每行分別為id及預測數值，以逗點分開
 
 Policy:  
@@ -52,27 +51,28 @@ Policy:
 * 每日上傳上限5次
 * test.csv的240筆資料分為：120筆public、120筆private
 * Leaderboard上顯示的是public的分數，在死線前可選擇2筆答案作為private的評分依據
+* 在10/13以後各位就可以看到private set的成績,並紀錄在report中
 
-Kaggle Score:  
+Score:  
 
-* (1%) 超過public leaderboard的simple baseline分數  
-* (1%) 超過public leaderboard的strong baseline分數  
-* (1%) 超過private leaderboard的simple baseline分數   
-* (1%) 超過private leaderboard的strong baseline分數  
-* (1%) 2017/10/06 23:59 前超過public simple baseline  
-* 備註：hw1.sh的結果必須超過public simple baseline否則將不會有任何分數 
+* (0.8%) 超過public leaderboard的simple baseline分數  
+* (0.8%) 超過public leaderboard的strong baseline分數  
+* (0.8%) 超過private leaderboard的simple baseline分數   
+* (0.8%) 超過private leaderboard的strong baseline分數  
+* (0.8%) 2017/10/05 23:59:59 前超過public simple baseline  
+* (1%) Kaggle排名前5名 且願意在上課時間上台跟大家分享的同學(助教另外聯絡)
 
 
-#### 2. Github repo (5 points) : Before 2017/10/13 11:59:00 (GMT+8)
+#### 2. Github (5 points) : Before 2017/10/13 11:59:00 (GMT+8)
 
 * 請填寫github url表單：https://goo.gl/forms/LOX5W6ByDPSNWA6N2 
 * 請每位修課同學務必填寫，hw0填過的也再填一次
 * 創立一個repository名為ML2017FALL，設為private，邀請助教信箱加入
 * 在ML2017FALL之下，建一資料夾名為hw1，需要有下列3個檔案，如果你有其他程式檔案，請一併上傳，
 * 另外，請不要上傳與作業無關檔案以及data。
-    - report.pdf <a href="https://docs.google.com/document/d/1kzztLEGUUkaZ_YwzPKO0q2dOeAQyrHWmwPlRmCkzV_s/edit?usp=sharing" target="_blank">(report download)</a>
-    - hw1.sh
-    - hw1_best.sh  
+  - report.pdf : https://docs.google.com/document/d/1kzztLEGUUkaZ_YwzPKO0q2dOeAQyrHWmwPlRmCkzV_s/edit?usp=sharing
+  - hw1.sh
+  - hw1_best.sh  
 
 #### 3. Other Policy
 * script 錯誤，直接0分。若是格式錯誤，請在公告時間內找助教修好，修完kaggle分數*0.7。
