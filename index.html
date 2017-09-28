@@ -14,12 +14,15 @@ In this assignment, you will practice using Gradient Descent to predict PM2.5.
 
 <hr>
 
-### 重要事項宣佈
+### 重要連結
 
 * 投影片連結 <a href="https://docs.google.com/presentation/d/1JAaVzT8UTShojE385a-wGzRe8WsJpQE0FhWQGc_Q-L0/edit?usp=sharing" target="_blank"><i class="fa fa-slideshare"></i></a>
 * Kaggle 連結 <a href="https://www.kaggle.com/c/ml-2017fall-hw1" target="_blank"><i class="fa fa-trophy"></i></a>
-* Github Repository URL 連結 <a href="https://goo.gl/forms/LOX5W6ByDPSNWA6N2" target="_blank"><i class="fa fa-file-text"></i></a>
-* TA會於10/6釋出範例程式碼，亦為超過 Kaggle simple baseline 的得分截止期限
+* Github Repo 表單 <a href="https://goo.gl/forms/LOX5W6ByDPSNWA6N2" target="_blank"><i class="fa fa-file-text"></i></a>
+* report template <a href="https://docs.google.com/document/d/1kzztLEGUUkaZ_YwzPKO0q2dOeAQyrHWmwPlRmCkzV_s/edit?usp=sharing" target="_blank"><i class="fa fa-edit fa-fw"></i></a>
+* 遲交表單 <a href="https://goo.gl/forms/UA6bLNDYJ4JKVytV2" target="_blank"><i class="fa fa-eye"></i></a>
+* TA將於10/6(Fri)上課時釋出範例程式碼，同時間會有小老師時間教大家寫作業一的程式
+
 
 ### The requirements of this assignment are as follows:
 
@@ -30,69 +33,9 @@ In this assignment, you will practice using Gradient Descent to predict PM2.5.
 
 ### Data 簡介
 
-* [train.csv](./train.csv) : 每個月前20天每個小時的氣象資料(每小時有18種測資)。共12個月。
-* [test.csv](./test.csv) : 排除train.csv中剩餘的資料，取連續9小時的資料當feature，預測第10小時的PM2.5值。總共取240筆不重複的test data。
+* [下載 train.csv](./train.csv) : 每個月前20天每個小時的氣象資料(每小時有18種測資)。共12個月。
+* [下載 test.csv](./test.csv) : 排除train.csv中剩餘的資料，取連續9小時的資料當feature，預測第10小時的PM2.5值。總共取240筆不重複的test data。
 
-### Submission Format
-
-#### 1. Kaggle (5 points) : Before 10/12/2017 11:59:00 PM (GMT+8)
-
-上傳格式:  
-
-* 上傳格式為csv
-* 第一行必須是 id,value
-* 第二行開始，每行分別為id及預測數值，以逗點分開
-
-Policy:  
-
-* 請至kaggle創帳號登入 (務必使用@ntu.edu.tw信箱)
-* 個人進行、不須組隊
-* 隊名：學號_任意名稱 (ex.b02901000_gai)，旁聽同學則避免使用此命名原則
-* 每日上傳上限5次
-* test.csv的240筆資料分為：120筆public、120筆private
-* Leaderboard上顯示的是public的分數，在死線前可選擇2筆答案作為private的評分依據
-* 在10/13以後各位就可以看到private set的成績,並紀錄在report中
-
-Score:  
-
-* (0.8%) 超過public leaderboard的simple baseline分數  
-* (0.8%) 超過public leaderboard的strong baseline分數  
-* (0.8%) 超過private leaderboard的simple baseline分數   
-* (0.8%) 超過private leaderboard的strong baseline分數  
-* (0.8%) 2017/10/05 23:59:59 前超過public simple baseline  
-* (1%) Kaggle排名前5名 且願意在上課時間上台跟大家分享的同學(助教另外聯絡)
-
-
-#### 2. Github (5 points) : Before 2017/10/13 11:59:00 (GMT+8)
-
-* 請填寫github url表單：https://goo.gl/forms/LOX5W6ByDPSNWA6N2 
-* 請每位修課同學務必填寫，hw0填過的也再填一次
-* 創立一個repository名為ML2017FALL，設為private，邀請助教信箱加入
-* 在ML2017FALL之下，建一資料夾名為hw1，需要有下列3個檔案，如果你有其他程式檔案，請一併上傳，
-* 另外，請不要上傳與作業無關檔案以及data。
-  - report.pdf : https://docs.google.com/document/d/1kzztLEGUUkaZ_YwzPKO0q2dOeAQyrHWmwPlRmCkzV_s/edit?usp=sharing
-  - hw1.sh
-  - hw1_best.sh  
-
-#### 3. Other Policy
-* script 錯誤，直接0分。若是格式錯誤，請在公告時間內找助教修好，修完kaggle分數*0.7。
-* Kaggle超過deadline直接shut down，可以繼續上傳但不計入成績。
-* Github遲交一天(*0.5)，不足一天以一天計算，有特殊原因請找助教。
-* Github遲交表單：https://goo.gl/forms/UA6bLNDYJ4JKVytV2 (遲交才必需填寫)
-* 遲交請「先上傳程式」至Github再填表單，助教會根據表單填寫時間當作繳交時間。
-
-#### 4. FAQ
-
-1. 如果只有做一個方法是否需要繳交兩份script？  
-Ans.  
-是的。如果只有做linear regression，kaggle上的分數也是linear regression  的話，也麻煩交兩份script。  
-2. 表單填錯怎麼辦？  
-Ans.  
-請直接重新填即可，會以最近的表單為準。  
-提醒，表單只是蒐集各位github repo url，不需每次git push都填一次表單。  
-再次提醒，修課同學一定都要填寫！  
-
-#### 5. 
 
 </xmp>
 </xmp> <script src="strapdown.js"></script> </html>
@@ -100,7 +43,7 @@ Ans.
   <center><a href="./index.html"><i class="fa fa-home"></i></a></center>
   <center><i class="fa fa-github"></i></a> Posted by: <a href="https://github.com/ntumlta/" target="_blank">ntumlta</a> </center>
   <center><i class="fa fa-envelope"></i> Contact information: <a href="mailto:"> ntu.mlta@gmail.com </a>.</center>
-  <center><i class="fa fa-mortar-board"></i> Course information: <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17.html", target="_blank">Machine Learning (2017, Spring) @ National Taiwan University</a>.</center>
+  <center><i class="fa fa-mortar-board"></i> Course information: <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html", target="_blank">Machine Learning (2017, Fall) @ National Taiwan University</a>.</center>
 </footer>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
