@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="mobile-web-app-capable" content="yes">
     <title>
-        TA hour - HackMD
+        Sample Code - HackMD
     </title>
     <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
     <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
@@ -35,7 +35,12 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid"><h1 id="ta-hour"><a class="anchor hidden-xs" href="#ta-hour" title="ta-hour"><span class="octicon octicon-link"></span></a>TA hour</h1><h3 id="import-library"><a class="anchor hidden-xs" href="#import-library" title="import-library"><span class="octicon octicon-link"></span></a>import library</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+    <div id="doc" class="markdown-body container-fluid"><h1 id="sample-code"><a class="anchor hidden-xs" href="#sample-code" title="sample-code"><span class="octicon octicon-link"></span></a>Sample Code</h1><p>Steps:</p><ol>
+<li>use csv to read file</li>
+<li>parse traning data to 5652 pairs of (x,y)</li>
+<li>train using gradient descent, adagrad</li>
+<li>predict testing pm2.5</li>
+</ol><h3 id="import-library"><a class="anchor hidden-xs" href="#import-library" title="import-library"><span class="octicon octicon-link"></span></a>import library</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
 <span data-linenumber="2"></span>
 <span data-linenumber="3"></span>
 <span data-linenumber="4"></span>
@@ -46,13 +51,7 @@
 <span class="hljs-keyword">import</span> random
 <span class="hljs-keyword">import</span> math
 <span class="hljs-keyword">import</span> sys
-</div></div></code></pre><h3 id="read-data"><a class="anchor hidden-xs" href="#read-data" title="read-data"><span class="octicon octicon-link"></span></a>read data</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
-<span data-linenumber="2"></span>
-<span data-linenumber="3"></span>
-<span data-linenumber="4"></span>
-<span data-linenumber="5"></span>
-<span data-linenumber="6"></span>
-<span data-linenumber="7"></span>
+</div></div></code></pre><h3 id="read-data"><a class="anchor hidden-xs" href="#read-data" title="read-data"><span class="octicon octicon-link"></span></a>read data</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="7"></span>
 <span data-linenumber="8"></span>
 <span data-linenumber="9"></span>
 <span data-linenumber="10"></span>
@@ -61,7 +60,13 @@
 <span data-linenumber="13"></span>
 <span data-linenumber="14"></span>
 <span data-linenumber="15"></span>
-<span data-linenumber="16"></span></div><div class="code">data = []
+<span data-linenumber="16"></span>
+<span data-linenumber="17"></span>
+<span data-linenumber="18"></span>
+<span data-linenumber="19"></span>
+<span data-linenumber="20"></span>
+<span data-linenumber="21"></span>
+<span data-linenumber="22"></span></div><div class="code">data = []
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">18</span>):
 	data.append([])
 
@@ -77,17 +82,17 @@ row = csv.reader(text , delimiter=<span class="hljs-string">","</span>)
 				data[(n_row<span class="hljs-number">-1</span>)%<span class="hljs-number">18</span>].append(float(<span class="hljs-number">0</span>))	
 	n_row =n_row+<span class="hljs-number">1</span>
 text.close()
-</div></div></code></pre><h3 id="parse-data-to-xy"><a class="anchor hidden-xs" href="#parse-data-to-xy" title="parse-data-to-xy"><span class="octicon octicon-link"></span></a>parse data to (x,y)</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
-<span data-linenumber="2"></span>
-<span data-linenumber="3"></span>
-<span data-linenumber="4"></span>
-<span data-linenumber="5"></span>
-<span data-linenumber="6"></span>
-<span data-linenumber="7"></span>
-<span data-linenumber="8"></span>
-<span data-linenumber="9"></span>
-<span data-linenumber="10"></span>
-<span data-linenumber="11"></span></div><div class="code">x = []
+</div></div></code></pre><h3 id="parse-data-to-xy"><a class="anchor hidden-xs" href="#parse-data-to-xy" title="parse-data-to-xy"><span class="octicon octicon-link"></span></a>parse data to (x,y)</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="23"></span>
+<span data-linenumber="24"></span>
+<span data-linenumber="25"></span>
+<span data-linenumber="26"></span>
+<span data-linenumber="27"></span>
+<span data-linenumber="28"></span>
+<span data-linenumber="29"></span>
+<span data-linenumber="30"></span>
+<span data-linenumber="31"></span>
+<span data-linenumber="32"></span>
+<span data-linenumber="33"></span></div><div class="code">x = []
 y = []
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">12</span>):
 	<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">471</span>):
@@ -98,106 +103,102 @@ y = []
 		y.append(data[<span class="hljs-number">9</span>][<span class="hljs-number">480</span>*i+j+<span class="hljs-number">9</span>])
 x = np.array(x)
 y = np.array(y)
-</div></div></code></pre><h3 id="init-weight-amp-other-hyperparams"><a class="anchor hidden-xs" href="#init-weight-amp-other-hyperparams" title="init-weight-amp-other-hyperparams"><span class="octicon octicon-link"></span></a>init weight &amp; other hyperparams</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
-<span data-linenumber="2"></span>
-<span data-linenumber="3"></span>
-<span data-linenumber="4"></span>
-<span data-linenumber="5"></span>
-<span data-linenumber="6"></span>
-<span data-linenumber="7"></span>
-<span data-linenumber="8"></span></div><div class="code">theta = np.zeros(len(x[<span class="hljs-number">0</span>]))
+</div></div></code></pre><h3 id="init-weight-amp-other-hyperparams"><a class="anchor hidden-xs" href="#init-weight-amp-other-hyperparams" title="init-weight-amp-other-hyperparams"><span class="octicon octicon-link"></span></a>init weight &amp; other hyperparams</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="34"></span>
+<span data-linenumber="35"></span>
+<span data-linenumber="36"></span></div><div class="code">theta = np.zeros(len(x[<span class="hljs-number">0</span>]))
 l_rate = <span class="hljs-number">10</span>
 repeat = <span class="hljs-number">10000</span>
-train_len = len(x)
-x_t = x.transpose()
-s_gra = np.zeros(len(x[<span class="hljs-number">0</span>]))
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(x[<span class="hljs-number">0</span>])):
-	s_gra[i] = <span class="hljs-number">1e-8</span>
-</div></div></code></pre><h3 id="check-your-ans-with-close-form-solution"><a class="anchor hidden-xs" href="#check-your-ans-with-close-form-solution" title="check-your-ans-with-close-form-solution"><span class="octicon octicon-link"></span></a>check your ans with close form solution</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
-<span data-linenumber="2"></span>
-<span data-linenumber="3"></span></div><div class="code"><span class="hljs-comment"># use close form to check whether ur gradient descent is good</span>
+</div></div></code></pre><h3 id="check-your-ans-with-close-form-solution"><a class="anchor hidden-xs" href="#check-your-ans-with-close-form-solution" title="check-your-ans-with-close-form-solution"><span class="octicon octicon-link"></span></a>check your ans with close form solution</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="37"></span>
+<span data-linenumber="38"></span>
+<span data-linenumber="39"></span></div><div class="code"><span class="hljs-comment"># use close form to check whether ur gradient descent is good</span>
 <span class="hljs-comment"># however, this cannot be used in hw1.sh </span>
 <span class="hljs-comment"># theta = np.matmul(np.matmul(inv(np.matmul(x.transpose(),x)),x.transpose()),y)</span>
-</div></div></code></pre><h3 id="start-training"><a class="anchor hidden-xs" href="#start-training" title="start-training"><span class="octicon octicon-link"></span></a>start training</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
-<span data-linenumber="2"></span>
-<span data-linenumber="3"></span>
-<span data-linenumber="4"></span>
-<span data-linenumber="5"></span>
-<span data-linenumber="6"></span>
-<span data-linenumber="7"></span>
-<span data-linenumber="8"></span>
-<span data-linenumber="9"></span>
-<span data-linenumber="10"></span></div><div class="code"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( repeat ):
+</div></div></code></pre><h3 id="start-training"><a class="anchor hidden-xs" href="#start-training" title="start-training"><span class="octicon octicon-link"></span></a>start training</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="40"></span>
+<span data-linenumber="41"></span>
+<span data-linenumber="42"></span>
+<span data-linenumber="43"></span>
+<span data-linenumber="44"></span>
+<span data-linenumber="45"></span>
+<span data-linenumber="46"></span>
+<span data-linenumber="47"></span>
+<span data-linenumber="48"></span>
+<span data-linenumber="49"></span>
+<span data-linenumber="50"></span>
+<span data-linenumber="51"></span>
+<span data-linenumber="52"></span></div><div class="code">x_t = x.transpose()
+s_gra = np.zeros(len(x[<span class="hljs-number">0</span>]))
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(repeat):
 	hypo = np.dot(x,theta)
-	loss = hypo - y[<span class="hljs-number">0</span>:train_len]
-	cost = np.sum(loss**<span class="hljs-number">2</span>) /train_len
+	loss = hypo - y
+	cost = np.sum(loss**<span class="hljs-number">2</span>) / len(x)
 	cost_a  = math.sqrt(cost)
 	gra = np.dot(x_t,loss)
 	s_gra += gra**<span class="hljs-number">2</span>
 	ada = np.sqrt(s_gra)
 	theta = theta - l_rate * gra/ada
 	<span class="hljs-keyword">print</span> (<span class="hljs-string">'iteration: %d | Cost: %f  '</span> % ( i,cost_a))
-</div></div></code></pre><h3 id="read-testing-data"><a class="anchor hidden-xs" href="#read-testing-data" title="read-testing-data"><span class="octicon octicon-link"></span></a>read testing data</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
-<span data-linenumber="2"></span>
-<span data-linenumber="3"></span>
-<span data-linenumber="4"></span>
-<span data-linenumber="5"></span>
-<span data-linenumber="6"></span>
-<span data-linenumber="7"></span>
-<span data-linenumber="8"></span>
-<span data-linenumber="9"></span>
-<span data-linenumber="10"></span>
-<span data-linenumber="11"></span>
-<span data-linenumber="12"></span>
-<span data-linenumber="13"></span>
-<span data-linenumber="14"></span>
-<span data-linenumber="15"></span>
-<span data-linenumber="16"></span>
-<span data-linenumber="17"></span>
-<span data-linenumber="18"></span>
-<span data-linenumber="19"></span></div><div class="code">a_data = []
+</div></div></code></pre><h3 id="read-testing-data"><a class="anchor hidden-xs" href="#read-testing-data" title="read-testing-data"><span class="octicon octicon-link"></span></a>read testing data</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="53"></span>
+<span data-linenumber="54"></span>
+<span data-linenumber="55"></span>
+<span data-linenumber="56"></span>
+<span data-linenumber="57"></span>
+<span data-linenumber="58"></span>
+<span data-linenumber="59"></span>
+<span data-linenumber="60"></span>
+<span data-linenumber="61"></span>
+<span data-linenumber="62"></span>
+<span data-linenumber="63"></span>
+<span data-linenumber="64"></span>
+<span data-linenumber="65"></span>
+<span data-linenumber="66"></span>
+<span data-linenumber="67"></span>
+<span data-linenumber="68"></span>
+<span data-linenumber="69"></span>
+<span data-linenumber="70"></span>
+<span data-linenumber="71"></span></div><div class="code">test_data = []
 n_row = <span class="hljs-number">0</span>
 text = open(<span class="hljs-string">'data/test_X.csv'</span> ,<span class="hljs-string">"r"</span>)
 row = csv.reader(text , delimiter= <span class="hljs-string">","</span>)
 
 <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> row:
 	<span class="hljs-keyword">if</span> n_row %<span class="hljs-number">18</span> == <span class="hljs-number">0</span>:
-		a_data.append([<span class="hljs-number">1</span>])
+		test_data.append([<span class="hljs-number">1</span>])
 		<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>,<span class="hljs-number">11</span>):
-			a_data[n_row//<span class="hljs-number">18</span>].append( float(r[i]) )
+			test_data[n_row//<span class="hljs-number">18</span>].append(float(r[i]) )
 	<span class="hljs-keyword">else</span> :
 		<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>,<span class="hljs-number">11</span>):
 			<span class="hljs-keyword">if</span> r[i] !=<span class="hljs-string">"NR"</span>:
-				a_data[n_row//<span class="hljs-number">18</span>].append( float(r[i]))
+				test_data[n_row//<span class="hljs-number">18</span>].append(float(r[i]))
 			<span class="hljs-keyword">else</span>:
-				a_data[n_row//<span class="hljs-number">18</span>].append( <span class="hljs-number">0</span> )
+				test_data[n_row//<span class="hljs-number">18</span>].append(<span class="hljs-number">0</span>)
 	n_row = n_row+<span class="hljs-number">1</span>
 text.close()
-data = np.array(a_data)
-</div></div></code></pre><h3 id="get-anscsv-with-your-model"><a class="anchor hidden-xs" href="#get-anscsv-with-your-model" title="get-anscsv-with-your-model"><span class="octicon octicon-link"></span></a>get ans.csv with your model</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
-<span data-linenumber="2"></span>
-<span data-linenumber="3"></span>
-<span data-linenumber="4"></span>
-<span data-linenumber="5"></span>
-<span data-linenumber="6"></span>
-<span data-linenumber="7"></span>
-<span data-linenumber="8"></span>
-<span data-linenumber="9"></span>
-<span data-linenumber="10"></span>
-<span data-linenumber="11"></span>
-<span data-linenumber="12"></span>
-<span data-linenumber="13"></span></div><div class="code">ans = []
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( len(data) ):
+test_data = np.array(test_data)
+</div></div></code></pre><h3 id="get-anscsv-with-your-model"><a class="anchor hidden-xs" href="#get-anscsv-with-your-model" title="get-anscsv-with-your-model"><span class="octicon octicon-link"></span></a>get ans.csv with your model</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="72"></span>
+<span data-linenumber="73"></span>
+<span data-linenumber="74"></span>
+<span data-linenumber="75"></span>
+<span data-linenumber="76"></span>
+<span data-linenumber="77"></span>
+<span data-linenumber="78"></span>
+<span data-linenumber="79"></span>
+<span data-linenumber="80"></span>
+<span data-linenumber="81"></span>
+<span data-linenumber="82"></span>
+<span data-linenumber="83"></span>
+<span data-linenumber="84"></span></div><div class="code">ans = []
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(test_data)):
 	ans.append([<span class="hljs-string">"id_"</span>+str(i)])
-	a =  np.dot(theta,data[i])
+	a = np.dot(theta,test_data[i])
 	ans[i].append(a)
 
 filename = <span class="hljs-string">"result/ans.csv"</span>
 text = open(filename, <span class="hljs-string">"w+"</span>)
 s = csv.writer(text,delimiter=<span class="hljs-string">','</span>,lineterminator=<span class="hljs-string">'\n'</span>)
 s.writerow([<span class="hljs-string">"id"</span>,<span class="hljs-string">"value"</span>])
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( len(ans) ):
-	s.writerow( ans[i] ) 
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(ans)):
+	s.writerow(ans[i]) 
 text.close()
 </div></div></code></pre></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
@@ -206,12 +207,12 @@ text.close()
                 <i class="fa fa-bars"></i>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
-                <div class="toc"><ul class="nav"><li class=""><a href="#ta-hour">TA hour</a><ul class="nav"><li><a href="#import-library">import library</a></li><li><a href="#read-data">read data</a></li><li><a href="#parse-data-to-xy">parse data to (x,y)</a></li><li><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li><a href="#start-training">start training</a></li><li><a href="#read-testing-data">read testing data</a></li><li><a href="#get-anscsv-with-your-model">get ans.csv with your model</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+                <div class="toc"><ul class="nav"><li class=""><a href="#sample-code">Sample Code</a><ul class="nav"><li class=""><a href="#import-library">import library</a></li><li class=""><a href="#read-data">read data</a></li><li class=""><a href="#parse-data-to-xy">parse data to (x,y)</a></li><li class=""><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li class=""><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li class=""><a href="#start-training">start training</a></li><li class=""><a href="#read-testing-data">read testing data</a></li><li class=""><a href="#get-anscsv-with-your-model">get ans.csv with your model</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
             </ul>
         </div>
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
-        <div class="toc"><ul class="nav"><li class=""><a href="#ta-hour">TA hour</a><ul class="nav"><li><a href="#import-library">import library</a></li><li><a href="#read-data">read data</a></li><li><a href="#parse-data-to-xy">parse data to (x,y)</a></li><li><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li><a href="#start-training">start training</a></li><li><a href="#read-testing-data">read testing data</a></li><li><a href="#get-anscsv-with-your-model">get ans.csv with your model</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+        <div class="toc"><ul class="nav"><li class=""><a href="#sample-code">Sample Code</a><ul class="nav"><li class=""><a href="#import-library">import library</a></li><li class=""><a href="#read-data">read data</a></li><li class=""><a href="#parse-data-to-xy">parse data to (x,y)</a></li><li class=""><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li class=""><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li class=""><a href="#start-training">start training</a></li><li class=""><a href="#read-testing-data">read testing data</a></li><li class=""><a href="#get-anscsv-with-your-model">get ans.csv with your model</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
