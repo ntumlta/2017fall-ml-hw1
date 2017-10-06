@@ -86,7 +86,7 @@ row = csv.reader(text , delimiter=<span class="hljs-string">","</span>)
                 data[(n_row<span class="hljs-number">-1</span>)%<span class="hljs-number">18</span>].append(float(r[i]))
             <span class="hljs-keyword">else</span>:
                 data[(n_row<span class="hljs-number">-1</span>)%<span class="hljs-number">18</span>].append(float(<span class="hljs-number">0</span>))	
-	n_row = n_row+<span class="hljs-number">1</span>
+    n_row = n_row+<span class="hljs-number">1</span>
 text.close()
 </div></div></code></pre><h3 id="parse-data-to-xy-投影片p56"><a class="anchor hidden-xs" href="#parse-data-to-xy-投影片p56" title="parse-data-to-xy-投影片p56"><span class="octicon octicon-link"></span></a>parse data to (x,y) (投影片p5~6)</h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="23"></span>
 <span data-linenumber="24"></span>
@@ -120,7 +120,7 @@ y = []
             <span class="hljs-comment"># 連續9小時</span>
             <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> range(<span class="hljs-number">9</span>):
                 x[<span class="hljs-number">471</span>*i+j].append(data[t][<span class="hljs-number">480</span>*i+j+s] )
-                y.append(data[<span class="hljs-number">9</span>][<span class="hljs-number">480</span>*i+j+<span class="hljs-number">9</span>])
+        y.append(data[<span class="hljs-number">9</span>][<span class="hljs-number">480</span>*i+j+<span class="hljs-number">9</span>])
 x = np.array(x)
 y = np.array(y)
 
@@ -245,19 +245,19 @@ s.writerow([<span class="hljs-string">"id"</span>,<span class="hljs-string">"val
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(ans)):
     s.writerow(ans[i]) 
 text.close()
-</div></div></code></pre><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
+</div></div></code></pre></div>
     <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
         <div class="pull-right dropdown">
             <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
                 <i class="fa fa-bars"></i>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
-                <div class="toc"><ul class="nav"><li class=""><a href="#sample-code">Sample Code</a><ul class="nav"><li class=""><a href="#import-library">import library</a></li><li class=""><a href="#read-data-投影片p34">read data (投影片p3~4)</a></li><li class=""><a href="#parse-data-to-xy-投影片p56">parse data to (x,y) (投影片p5~6)</a></li><li class=""><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li class=""><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li class=""><a href="#start-training-投影片p710">start training (投影片p7~10)</a></li><li class=""><a href="#saveread-model">save/read model</a></li><li class=""><a href="#read-testing-data-投影片p11">read testing data (投影片p11)</a></li><li class=""><a href="#get-anscsv-with-your-model-投影片p11續">get ans.csv with your model (投影片p11續)</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+                <div class="toc"><ul class="nav"><li class=""><a href="#sample-code">Sample Code</a><ul class="nav"><li class=""><a href="#import-library">import library</a></li><li class=""><a href="#read-data-投影片p34">read data (投影片p3~4)</a></li><li class=""><a href="#parse-data-to-xy-投影片p56">parse data to (x,y) (投影片p5~6)</a></li><li class=""><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li class=""><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li class=""><a href="#start-training-投影片p710">start training (投影片p7~10)</a></li><li><a href="#saveread-model">save/read model</a></li><li><a href="#read-testing-data-投影片p11">read testing data (投影片p11)</a></li><li class=""><a href="#get-anscsv-with-your-model-投影片p11續">get ans.csv with your model (投影片p11續)</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
             </ul>
         </div>
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
-        <div class="toc"><ul class="nav"><li class=""><a href="#sample-code">Sample Code</a><ul class="nav"><li class=""><a href="#import-library">import library</a></li><li class=""><a href="#read-data-投影片p34">read data (投影片p3~4)</a></li><li class=""><a href="#parse-data-to-xy-投影片p56">parse data to (x,y) (投影片p5~6)</a></li><li class=""><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li class=""><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li class=""><a href="#start-training-投影片p710">start training (投影片p7~10)</a></li><li class=""><a href="#saveread-model">save/read model</a></li><li class=""><a href="#read-testing-data-投影片p11">read testing data (投影片p11)</a></li><li class=""><a href="#get-anscsv-with-your-model-投影片p11續">get ans.csv with your model (投影片p11續)</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+        <div class="toc"><ul class="nav"><li class=""><a href="#sample-code">Sample Code</a><ul class="nav"><li class=""><a href="#import-library">import library</a></li><li class=""><a href="#read-data-投影片p34">read data (投影片p3~4)</a></li><li class=""><a href="#parse-data-to-xy-投影片p56">parse data to (x,y) (投影片p5~6)</a></li><li class=""><a href="#init-weight-amp-other-hyperparams">init weight &amp; other hyperparams</a></li><li class=""><a href="#check-your-ans-with-close-form-solution">check your ans with close form solution</a></li><li class=""><a href="#start-training-投影片p710">start training (投影片p7~10)</a></li><li><a href="#saveread-model">save/read model</a></li><li><a href="#read-testing-data-投影片p11">read testing data (投影片p11)</a></li><li class=""><a href="#get-anscsv-with-your-model-投影片p11續">get ans.csv with your model (投影片p11續)</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
