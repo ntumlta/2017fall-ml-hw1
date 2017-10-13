@@ -18,8 +18,12 @@ In this assignment, you will practice using Gradient Descent to predict PM2.5.
 
 10/13  
 
+* report 中 public + private 分數的意思是：testing中240筆的RMSE，也就是 square root{[(public)^2+(private)^2]/2}
 * [testing答案](./ans.csv)釋出！
 * hw1_best.sh：選擇的2筆kaggle分數中，private較好的那一個model (註：不用完全一模一樣重現，可接受誤差+0.2)
+  - ex. (1) public:6.5/private:5.5 (2) public:6.1/private:5.7
+  - 滿足hw1_best.sh 的 private分數 < 5.5 + 0.2 即可
+* hw1.sh：public分數 > public simple baseline 即可
 * kaggle的成績：只要2筆中任何1筆>某baseline，即得該baseline成績
 * github死線：今晚午夜
 
